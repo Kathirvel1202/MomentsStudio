@@ -270,3 +270,8 @@
 .card img,.service-card>img,.price-card>img,.story-card img,.gallery-item img,.split>.photo{object-position:center 34%}
 /* Apply after the page-level image sizing rules so these focus points win. */
 .section:not(.page-hero-centered) .card>img,.section:not(.page-hero-centered) .service-card>img,.section:not(.page-hero-centered) .price-card>img,.section:not(.page-hero-centered) .split>.photo,.story-card img,#gallery .gallery-item img{object-position:center 34%}
+
+/* Keep both faces in the About hero crop on wide and narrow screens. */
+.about-hero .photo{object-position:center 42%}
+@media(max-width:800px){.about-hero .photo{object-position:center 42%}}
+
