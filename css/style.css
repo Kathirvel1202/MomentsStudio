@@ -285,3 +285,12 @@
 .contact-final-actions{display:flex;flex-direction:column;gap:12px;min-width:min(250px,100%)}
 .contact-final-actions .btn{width:100%;white-space:nowrap}
 @media(max-width:800px){.contact-final .cta-panel{align-items:flex-start}.contact-final-actions{width:100%;min-width:0}}
+
+/* Contact location map sits between the booking callout and the site footer. */
+.contact-map.section{min-height:auto;padding-block:clamp(36px,5vw,64px)}
+.contact-map-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:24px}
+.contact-map-heading h2{margin-bottom:8px}
+.contact-map-heading p{margin:0}
+.contact-map-frame{width:100%;height:clamp(300px,42vw,520px);overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#d8ddd6;box-shadow:0 16px 38px rgba(35,30,27,.1)}
+.contact-map-frame iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:640px){.contact-map-heading{align-items:flex-start;flex-direction:column}.contact-map-frame{height:340px;border-radius:18px}}
