@@ -275,3 +275,13 @@
 .about-hero .photo{object-position:center 42%}
 @media(max-width:800px){.about-hero .photo{object-position:center 42%}}
 
+
+/* One unified contact closing section for booking guidance and contact actions. */
+.contact-final.section{min-height:auto;padding-block:clamp(36px,5vw,64px)}
+.contact-final .cta-panel{width:100%;gap:clamp(28px,5vw,72px)}
+.contact-final-copy{max-width:740px}
+.contact-final-copy h2{max-width:17ch}
+.contact-final-copy .contact-final-note{margin-top:16px}
+.contact-final-actions{display:flex;flex-direction:column;gap:12px;min-width:min(250px,100%)}
+.contact-final-actions .btn{width:100%;white-space:nowrap}
+@media(max-width:800px){.contact-final .cta-panel{align-items:flex-start}.contact-final-actions{width:100%;min-width:0}}
