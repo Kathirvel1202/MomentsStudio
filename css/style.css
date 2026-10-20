@@ -279,6 +279,9 @@
 /* One unified contact closing section for booking guidance and contact actions. */
 .contact-final.section{min-height:auto;padding-block:clamp(36px,5vw,64px)}
 .contact-final .cta-panel{width:100%;gap:clamp(28px,5vw,72px)}
+.contact-final.section{background:#29232b;color:#fff5e8}
+.contact-final.section p{color:#d3c4b7}
+.contact-final .cta-panel{background:transparent;border-radius:0;padding:clamp(28px,5vw,64px) 0}
 .contact-final-copy{max-width:740px}
 .contact-final-copy h2{max-width:17ch}
 .contact-final-copy .contact-final-note{margin-top:16px}
@@ -294,3 +297,9 @@
 .contact-map-frame{width:100%;height:clamp(300px,42vw,520px);overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#d8ddd6;box-shadow:0 16px 38px rgba(35,30,27,.1)}
 .contact-map-frame iframe{display:block;width:100%;height:100%;border:0}
 @media(max-width:640px){.contact-map-heading{align-items:flex-start;flex-direction:column}.contact-map-frame{height:340px;border-radius:18px}}
+
+/* Home 2 closing CTA matches the compact single-line reference button. */
+.home-two #home-booking .cta-panel>.btn{flex:0 0 auto;min-width:277px;min-height:72px;padding:1rem 1.65rem;white-space:nowrap}
+.home-one #home-booking .cta-panel>.btn,body:not(.home-two) #home-booking .cta-panel>.btn{flex:0 0 auto;min-width:277px;min-height:72px;padding:1rem 1.65rem;white-space:nowrap}
+@media(max-width:520px){.home-two #home-booking .cta-panel>.btn{width:100%;min-width:0;max-width:320px}}
+@media(max-width:520px){.home-one #home-booking .cta-panel>.btn,body:not(.home-two) #home-booking .cta-panel>.btn{width:100%;min-width:0;max-width:320px}}

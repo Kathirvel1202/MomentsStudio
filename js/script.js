@@ -82,17 +82,6 @@
     if (answer) { if (!answer.id) answer.id = `faq-answer-${i + 1}`; btn.setAttribute('aria-controls', answer.id); btn.setAttribute('aria-expanded', 'false'); answer.hidden = true; }
     btn.addEventListener('click', () => { const open = btn.closest('.faq-item').classList.toggle('open'); btn.setAttribute('aria-expanded', String(open)); if (answer) answer.hidden = !open; });
   });
-  document.querySelectorAll('[data-auth-tab]').forEach(btn => btn.addEventListener('click', () => setAuthMode(btn.dataset.authTab)));
-  const authForm = document.querySelector('[data-auth-form]');
-  if (authForm) authForm.addEventListener('submit', e => {
-    e.preventDefault(); if (!authForm.reportValidity()) return;
-    const mode = document.querySelector('[data-auth-mode]:not([hidden])')?.dataset.authMode;
-    const password = document.querySelector(mode === 'register' ? '#register-password' : '#login-password');
-    const confirmation = document.querySelector('#register-confirm');
-    if (mode === 'register' && password?.value !== confirmation?.value) { confirmation.setCustomValidity('Passwords do not match.'); confirmation.reportValidity(); return; }
-    showToast('Demo only: your details were checked in this browser and were not sent or saved. Connect a secure authentication provider before production.');
-  });
-  document.querySelectorAll('#register-password, #register-confirm').forEach(input => input.addEventListener('input', () => { const confirm = document.querySelector('#register-confirm'); if (confirm) confirm.setCustomValidity(confirm.value && confirm.value !== document.querySelector('#register-password').value ? 'Passwords do not match.' : ''); }));
   document.querySelectorAll('[data-demo-form]').forEach(form => form.addEventListener('submit', e => {
     e.preventDefault(); if (!form.reportValidity() || form.dataset.submitting === 'true') return;
     form.dataset.submitting = 'true'; form.setAttribute('aria-busy', 'true'); const submit = form.querySelector('[type="submit"]');
@@ -100,14 +89,6 @@
     showToast('Demo only: your enquiry is valid but has not been sent. Connect a backend or form service to receive it.');
     window.setTimeout(() => { form.reset(); form.dataset.submitting = 'false'; form.removeAttribute('aria-busy'); if (submit) submit.disabled = false; }, 900);
   }));
-  document.querySelectorAll('[data-password-toggle]').forEach(btn => btn.addEventListener('click', () => { const input = btn.parentElement.querySelector('input'); input.type = input.type === 'password' ? 'text' : 'password'; btn.textContent = input.type === 'password' ? 'Show' : 'Hide'; btn.setAttribute('aria-label', `${input.type === 'password' ? 'Show' : 'Hide'} ${input.labels?.[0]?.textContent || 'password'}`); }));
-  function setAuthMode(mode) {
-    document.querySelectorAll('[data-auth-tab]').forEach(b => { b.classList.toggle('active', b.dataset.authTab === mode); b.setAttribute('aria-selected', String(b.dataset.authTab === mode)); });
-    document.querySelectorAll('[data-auth-mode]').forEach(el => { el.hidden = el.dataset.authMode !== mode; el.querySelectorAll('input,select,textarea,button').forEach(control => { control.disabled = el.hidden; }); });
-    const title = document.querySelector('[data-auth-title]'); if (title) title.textContent = mode === 'login' ? 'Welcome back' : 'Create your account';
-  }
-  window.setAuthMode = setAuthMode;
-  if (authForm) setAuthMode('login');
   function showToast(message) { let toast = document.querySelector('.toast'); if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite'); document.body.appendChild(toast); } toast.textContent = message; toast.classList.add('show'); clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 5200); }
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 })();
