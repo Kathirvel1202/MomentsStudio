@@ -27,11 +27,25 @@ img {
 .social-icon {
     width: 44px;
     height: 44px;
-    display: grid;
-    place-items: center;
-    border: 1px solid #394653;
-    border-radius: 14px;
-    color: #c5d0de
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #38281d 0%, #221a15 50%, #181e24 100%);
+    border: 1.5px solid #cf9e58;
+    color: #e8c98e;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(24, 30, 36, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: all .25s ease;
+}
+.social-icon:hover {
+    background: linear-gradient(135deg, #fae9c4 0%, #e8c98e 40%, #cf9e58 75%, #a87d3a 100%);
+    border-color: #fae9c4;
+    color: #181e24;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(207, 158, 88, 0.45);
 }
 
 .nav-home {
@@ -106,6 +120,7 @@ img {
     color: var(--text)
 }
 
+
 [data-theme="light"] .topbar .nav-link.active,
 [data-theme="light"] .topbar .nav-link:hover,
 [data-theme="light"] .topbar .nav-home.open>.nav-link {
@@ -162,4 +177,52 @@ img {
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 16px
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVENESS REFINEMENTS
+   Clean tap targets, zero horizontal overflows, and smooth scrolling.
+   ========================================================================== */
+@media (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.comparison-wrap {
+    -webkit-overflow-scrolling: touch;
+}
+
+img, svg, video, iframe {
+    max-width: 100%;
+}
+
+@media (max-width: 580px) {
+    .container {
+        width: calc(100% - 32px);
+    }
+    .hero-actions,
+    .cta-panel-actions,
+    .contact-final-actions {
+        width: 100%;
+    }
+    .hero-actions .btn,
+    .cta-panel-actions .btn,
+    .contact-final-actions .btn {
+        width: 100%;
+        min-width: 0;
+    }
+    .gallery-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+    .gallery-filter button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
 }

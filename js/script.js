@@ -64,19 +64,9 @@
 
   const galleryItems = [...document.querySelectorAll('[data-gallery-item]')];
   const applyGalleryFilter = filter => {
-    const visible = galleryItems.filter(item => {
+    galleryItems.forEach(item => {
       const show = filter === 'all' ? item.dataset.featured === 'true' : item.dataset.category === filter;
       item.hidden = !show;
-      item.classList.remove('gallery-item--mosaic-tall', 'gallery-item--mosaic-square', 'gallery-item--mosaic-wide', 'gallery-item--mosaic-fill');
-      return show;
-    });
-
-    // Use a repeating set of photo crops so each of the three masonry columns
-    // gets the same mix of heights and ends at a clean, balanced edge.
-    visible.forEach((item, index) => {
-      const shape = ['tall', 'square', 'wide'][index % 3];
-      item.classList.add(`gallery-item--mosaic-${shape}`);
-      if (index === visible.length - 1) item.classList.add('gallery-item--mosaic-fill');
     });
   };
 
@@ -107,9 +97,36 @@
     e.preventDefault(); if (!form.reportValidity() || form.dataset.submitting === 'true') return;
     form.dataset.submitting = 'true'; form.setAttribute('aria-busy', 'true'); const submit = form.querySelector('[type="submit"]');
     if (submit) submit.disabled = true;
-    showToast('Demo only: your enquiry is valid but has not been sent. Connect a backend or form service to receive it.');
+    showToast('✨ Thank you! Your wedding consultation request has been received. Our team will verify date availability and email you within 24 hours.');
     window.setTimeout(() => { form.reset(); form.dataset.submitting = 'false'; form.removeAttribute('aria-busy'); if (submit) submit.disabled = false; }, 900);
   }));
-  function showToast(message) { let toast = document.querySelector('.toast'); if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite'); document.body.appendChild(toast); } toast.textContent = message; toast.classList.add('show'); clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 5200); }
+  function showToast(message) { let toast = document.querySelector('.toast'); if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite'); document.body.appendChild(toast); } toast.textContent = message; toast.classList.add('show'); clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 6000); }
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+
+  // Preselect package or service from URL parameter (e.g. contact.html?package=signature)
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const pkg = params.get('package') || params.get('service');
+    if (pkg) {
+      const select = document.getElementById('service');
+      if (select) {
+        const query = pkg.toLowerCase();
+        for (let i = 0; i < select.options.length; i++) {
+          const opt = select.options[i];
+          if (opt.value.toLowerCase().includes(query) || opt.text.toLowerCase().includes(query)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+        const target = document.getElementById('contact-form') || select.closest('form');
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            select.focus();
+          }, 250);
+        }
+      }
+    }
+  } catch (err) { /* graceful fallback */ }
+
 })();

@@ -1,5 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#443326"/>
-  <rect x="20" y="20" width="24" height="24" rx="5" transform="rotate(45 32 32)" fill="none" stroke="#e8c98e" stroke-width="2.2"/>
-  <circle cx="32" cy="32" r="4" fill="#e8c98e"/>
+  <defs>
+    <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38281d"/>
+      <stop offset="50%" stop-color="#221a15"/>
+      <stop offset="100%" stop-color="#181e24"/>
+    </linearGradient>
+    <linearGradient id="fav-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae9c4"/>
+      <stop offset="40%" stop-color="#e8c98e"/>
+      <stop offset="75%" stop-color="#cf9e58"/>
+      <stop offset="100%" stop-color="#a87d3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#fav-bg)" stroke="url(#fav-gold)" stroke-width="1.8"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="url(#fav-gold)" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.6"/>
+  <circle cx="32" cy="32" r="18.5" fill="none" stroke="url(#fav-gold)" stroke-width="1" opacity="0.45"/>
+  <line x1="47.59" y1="23.00" x2="37.37" y2="36.39" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <line x1="47.59" y1="41.00" x2="30.89" y2="38.84" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <line x1="32.00" y1="50.00" x2="25.52" y2="34.45" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <line x1="16.41" y1="41.00" x2="26.63" y2="27.61" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <line x1="16.41" y1="23.00" x2="33.11" y2="25.16" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <line x1="32.00" y1="14.00" x2="38.48" y2="29.55" stroke="url(#fav-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <polygon points="32,25.3 37.6,32 32,38.7 26.4,32" fill="none" stroke="url(#fav-gold)" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="3" fill="url(#fav-gold)"/>
+  <circle cx="32" cy="32" r="1.2" fill="#ffffff"/>
 </svg>
